@@ -8,6 +8,14 @@
  * render responsive styling in Windows 8 "snapped" views; IE10+ does not honor
  * the meta tag. See http://core.trac.wordpress.org/ticket/25888.
  */
+.transform(@style) {
+  -webkit-transform: @style;
+  -moz-transform: @style;
+  -ms-transform: @style;
+  -o-transform: @style;
+  transform: @style;
+}
+
 @-ms-viewport {
 	width: device-width;
 }
@@ -20,7 +28,7 @@
 @media screen and (max-width: 1245px) {
    .single-page{
    	  .effect-moveleft.animate .area{
-   	  	 -webkit-transform: translateX(-150%);
+        .transform(translateX(-150%));
    	  }
    }
    .toolbar{
@@ -33,7 +41,7 @@
    	  .main{
    	  	 width: 840px;
    	  	 &.show{
-   	  	 	-webkit-transform: translateY(0%) translateX(0%);
+            .transform(translateY(0%) translateX(0%));
    	  	 }
    	  }
    }
@@ -99,7 +107,7 @@
    	  .main{
    	  	 width: 770px;
    	  	 &.show{
-   	  	 	-webkit-transform: translateY(50px) translateX(0%);
+            .transform(translateY(50px) translateX(0%));
    	  	 }
    	  }
    }
@@ -145,7 +153,7 @@
           &.show{
             width: 288px;
             right: 6px;
-            -webkit-transform: translateY(92px) translateX(0%);
+            .transform(translateY(92px) translateX(0%));
           }
         }
    }

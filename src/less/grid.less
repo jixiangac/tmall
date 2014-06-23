@@ -145,15 +145,14 @@ article.content-area{
 		padding: 25px;
 
         visibility: hidden;
-		-webkit-transform: translateY(200%);
-		transform: translateY(200%);
+		.transform(translateY(200%));
+
 		-webkit-transition: -webkit-transform 0.5s, visibility 0s 0.5s;
 		transition: transform 0.5s, visibility 0s 0.5s;
  
 		&.show{
 		   visibility: visible;
-			-webkit-transform: translateY(0%);
-			transform: translateY(0%);
+			.transform(translateY(0%));
 			-webkit-transition: -webkit-transform 0.5s;
 			transition: transform 0.5s;
 			z-index: 10;
@@ -229,14 +228,14 @@ article.content-area{
 		padding: 10px;
 
         visibility: hidden;
-		-webkit-transform: translateY(0%) translateX(100%);
-		// transform: translateX(100%);
+		.transform(translateY(0%) translateX(100%));
+
 		-webkit-transition: -webkit-transform 0.5s, visibility 0s 0.5s;
 		transition: transform 0.5s, visibility 0s 0.5s;
+
 		&.show{
 			visibility: visible;
-			-webkit-transform: translateY(0%) translateX(8%);
-			transform: translateX(-5%);
+			.transform(translateY(0%) translateX(8%));
 			-webkit-transition: -webkit-transform 0.5s;
 			transition: transform 0.5s;
 			z-index: 10;
@@ -342,16 +341,18 @@ article.content-area{
    width: 40px;
    cursor: pointer;
    
-   -webkit-transform: translateY(0%) translateX(-100%) rotate(0deg);
+   .transform(translateY(0%) translateX(-100%) rotate(0deg));
+
    -webkit-transition: -webkit-transform 0.5s;
    transition: transform 0.5s;
+
    &.show{
-   	   -webkit-transform: translateY(0%) translateX(100%) rotate(360deg);
+   	   .transform(translateY(0%) translateX(100%) rotate(360deg));
 		left: 20px;
 		top: 73%;
    }
    &.hide{
-   	  -webkit-transform: translateY(0%) translateX(-100%) rotate(0deg);
+   	  .transform(translateY(0%) translateX(-100%) rotate(0deg));
    }
 }
 
@@ -400,8 +401,7 @@ article.content-area{
 }
 
 .effect-moveleft.animate .area {
-	-webkit-transform:  translateY(99px) translateX(-415.8px) rotateY(58deg) translateZ(-50px);
-	transform: translateX(-50%) rotateY(45deg) translateZ(-50px);
+	.transform(translateY(99px) translateX(-415.8px) rotateY(58deg) translateZ(-50px));
 	article .list{
 		width: 320px;
 		li{
@@ -413,8 +413,7 @@ article.content-area{
 		}
 	}
 	header .logo{
-		-webkit-transform: translateY(-73%) translateX(23.5%);
-		transform: translateY(-30%) translateX(23.5%);
+		.transform(translateY(-73%) translateX(23.5%));
 	}
 	.ad{
 		display: none;
