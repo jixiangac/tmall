@@ -1,0 +1,15 @@
+{
+  "name": "tmall-f2e",
+  "version": "0.0.1",
+  "description": "tmall-f2e",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "tmall-f2e"
+  },
+  "author": "jixiang.hjx",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.0",
+    "gulp-less": "^1.2.3"
+  }
+}
