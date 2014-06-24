@@ -228,13 +228,27 @@ article.content-area .ad {
   left: 12px;
   top: 140px;
   width: 180px;
-  min-height: 200px;
-  border: 1px solid #999;
+  min-height: 290px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.35);
   display: table;
   vertical-align: middle;
 }
-article.content-area .ad .t-f2e-font {
-  padding-right: 10px;
+article.content-area .ad ul {
+  font-size: 14px;
+  list-style: disc inside;
+  color: #cedcd9;
+}
+article.content-area .ad ul li {
+  font-size: 13px;
+  width: 173px;
+  word-wrap: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+article.content-area .ad ul li a:hover {
+  color: #c40000;
 }
 article.content-area .ad .box {
   height: 100%;
@@ -245,7 +259,7 @@ article.content-area .ad .box {
   vertical-align: middle;
   display: table-cell;
   text-indent: 1em;
-  line-height: 2.5;
+  line-height: 4em;
 }
 article.content-area .init .list {
   display: none;
