@@ -1,6 +1,50 @@
 /**
  *  布局类
  */
+@-webkit-keyframes fadeIn {
+  from {
+    -webkit-transform: translateY(30px);
+    opacity: 0; }
+
+  to {
+    -webkit-transform: translateY(0);
+    opacity: 1; } }
+
+@-moz-keyframes fadeIn {
+  from {
+    -moz-transform: translateY(30px);
+    opacity: 0; }
+
+  to {
+    -moz-transform: translateY(0);
+    opacity: 1; } }
+
+@-ms-keyframes fadeIn {
+  from {
+    -ms-transform: translateY(30px);
+    opacity: 0; }
+
+  to {
+    -ms-transform: translateY(0);
+    opacity: 1; } }
+
+@-o-keyframes fadeIn {
+  from {
+    -o-transform: translateY(30px);
+    opacity: 0; }
+
+  to {
+    -o-transform: translateY(0);
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0; }
+
+  to {
+    transform: translateY(0);
+    opacity: 1; } }
 
 .animate(@style, @time){
   -webkit-transition: @style @time linear;
@@ -23,6 +67,13 @@
   -o-transition: -o-@style @time;
   transition: @style @time;	
 }
+.animation(@style,@time){
+    -webkit-animation: @style @time;
+    -moz-animation: @style @time;
+    -ms-animation: @style @time;
+    -o-animation: @style @time;
+    animation: @style @time;
+}
 
 .hidden{
 	display: none;
@@ -36,10 +87,12 @@
 		color: #F32043;
 	}
 }
+
 .wrapper{
 	width: 100%;
 	height: 100%;
 	padding-bottom: 20px;
+	padding-top: 100px;
 }
 .container{
   width: 990px;
@@ -261,6 +314,15 @@ article.content-area{
 	        .transform( scale(0.7) );
 		}
 		box-shadow: 0 0 1px #666;
+   }
+   .article{
+   	   // -webkit-transition: -webkit-transform 0.5s, visibility 0s 0.5s;
+	   // transition: transform 0.5s, visibility 0s 0.5s;
+	   // .transform(translateY(10%));
+	   // opacity: 0;
+	   &.show{
+	     .animation(fadeIn, 0.3s);
+	   }
    }
 }
 .toolbar{

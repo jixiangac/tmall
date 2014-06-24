@@ -3,12 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<title>天猫博客</title>
+
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
     <meta name="format-detection" content="telephone=no,address=no,email=no" />
     <meta name="mobileOptimized" content="width" />
     <meta name="handheldFriendly" content="true" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="天猫,前端,博客">
+    <meta name="description" content="天猫前端博客-地球上最好的前端">
 	<link rel="stylesheet" href="./src/style.css">
 	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1403447927_325717.css">
 	<script src="http://g.tbcdn.cn/kissy/k/1.4.0/seed-min.js?t=20140619"></script>
@@ -23,11 +26,11 @@
      <div class="container">
          <div class="area">
          	 <header>
-            <div class="ad">
+        <!--     <div class="ad">
                <div class="main">
                </div>
             </div>
-         	 	<h1 id="logo" class="logo">
+ -->         	 	<h1 id="logo" class="logo">
          	 		<i class="t-f2e-font t-f2e-font-tianmaojifen"></i>
          	 		<span>TMALL-F2E</span>
          	 	</h1>
@@ -64,7 +67,9 @@
          </div>
           <!-- <a id="J_Close" class="close t-f2e-font t-f2e-font-danchuguanbi"></a> -->
          <article id="J_Content" class="content">
-             <section class="main"></section>
+             <section class="main">
+                 <div class="article"></div>
+             </section>
          </article>
      </div>
   </div>
@@ -82,6 +87,31 @@
      </section>
    </div>
  </article>
+ <!-- COPYRIGHT -->
+ <footer class="footer container clearfix">
+    <div class="info">
+    <div class="f-item">
+       <h6>MAIL</h6>
+       <ul>
+          <li><a href="mailto:hr@tmall.com">hr@tmall.com</a></li>
+       </ul>
+    </div>
+    <div class="f-item">
+        <h6>SOCIAL CHANNELS</h6>
+        <ul>
+          <li><a href="https://twitter.com/kerem">twitter.com/kerem</a></li>
+          <li><a href="https://instagram.com/keremsuer">instagram.com/keremsuer</a></li>
+          <li><a href="https://last.fm/user/keremsuer">last.fm/keremsuer</a></li>
+        </ul>
+    </div>
+    <div class="f-item">
+        <h6>LINKS</h6>
+        <ul>
+          <li><a href="https://jixiangac.com">jixiangac.com</a></li>
+        </ul>
+    </div>
+    </div>
+ </footer>
  <!-- TPL -->
 <script id="J_ListTpl" type="text/tpl">
     {{#each data}}

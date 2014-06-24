@@ -52,6 +52,9 @@
  * @type {[type]}
  */
 @media screen and (max-width: 1001px) {
+  .wrapper{
+    padding-top: 10px;
+  }
    .container{
    	  width: 770px;
    }
@@ -65,13 +68,23 @@
    	  margin: -33px auto 0 auto;
    	  .tags{
    	  	position: absolute;
-		left: 739px;
-		top: -21px;
-		z-index: 99;
+    		left: 739px;
+    		top: -21px;
+    		z-index: 99;
    	  }
    	  .ad{
-   	  	 display: none;
+   	  	 min-height: inherit;
+         left: 0;
+          top: 493px;
+          width: 100%;
+          margin-bottom: 20px;
    	  }
+   }
+   footer.footer{
+      margin-top: 250px;
+      .info{
+         padding-left: 0;
+      }
    }
    .toolbar{
     	top: 0;

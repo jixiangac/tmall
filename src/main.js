@@ -14,6 +14,8 @@
    var _STORE_CLS = 'tmall-f2e-blog-list';
    var _STORE_CLS_PAGE = 'tmall-f2e-blog-page';
 
+   var loading = '<div class="loading"><div class="gmb-loader"><div></div><div></div><div></div></div></div>';
+
    var EVENT_CLICK = U.isTouchEventSupported() ? 'tap' : 'click';
 
    function Main(config) {
@@ -214,9 +216,10 @@
       */
      renderPage: function (id, side) {
           var self = this;
+          $.one('.article', CONTENT).html( loading ).removeClass('show');
           var Storage = self.Storage;
           var _renderPage = function(data) {
-              $.one('.main', CONTENT).html( marked(data) );
+              $.one('.article', CONTENT).html( marked(data) ).addClass('show');
           }
 
           $.one('#wrapper').addClass('perspective effect-moveleft animate');
