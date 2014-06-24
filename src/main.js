@@ -34,13 +34,14 @@
           smartLists: true,
           smartypants: false
         });
-        self.render();
+        self.initStore();
    	 },
      render: function () {
         var self = this;
-        self.initStore();
+        self.step1();
         self.initArchive();
         self.initSideBar();
+        self.initHashEvents();
      },
      /**
       * 初始化storage，
@@ -52,8 +53,26 @@
         S.getScript('http://g.tbcdn.cn/mui/storage/1.1.0/basic.js', function () {
             S.use('mui/storage/basic', function (S, Storage) {
                self.Storage || (self.Storage = Storage);
-               self.step1();
+               self.render();
             });
+        });
+     },
+     initHashEvents: function () {
+        var self = this;
+        function change() {
+            var hash = self.getHash();
+            if (hash) {
+                self.renderPage( self.get('id') , {
+                       url: hash.html_url,
+                       title: hash.title,
+                       author: hash.user.login,
+                       date: hash.created_at.split('T')[0]
+                });
+            } 
+        }
+        change();
+        $.one(window).on('hashchange', function() {
+            change();
         });
      },
      /**
@@ -63,12 +82,12 @@
       */
      step1: function () {
         var self = this;
-        setTimeout(function () {
-           $.one('#logo').addClass('after');
+        // setTimeout(function () {
+           // $.one('#logo').addClass('after');
            $.one('.list', '#main').fadeIn();
            $.one('.list-wrap', '#main').removeClass('init');
            self.getList();
-        }, 500);
+        // }, 500);
      },
      /**
       * 获取列表
@@ -83,17 +102,12 @@
             var _data = self.formateData( S.clone(data) );
             self.renderList(_data);
             self.pagenav();
-            if ( self.initHash() ) {
-               // $.one('body').addClass()
-            } 
         }
         var cfg = {
            url: APIURL,
            success: function (data) {
               Storage.set(_STORE_CLS, data);
               render(data);
-              // var _tdata = data.body.replace(/\!\[*\]\(*\)/gi,'花七');
-              // $.one('#main').html('<pre>'+ _tdata +'</pre>');
            }
         };
         var _data_ = Storage.get(_STORE_CLS);
@@ -107,22 +121,33 @@
      hasPageNo: function () {
         var self = this;
         var data = self.get('datas');
-        var hash = parseInt( window.location.hash.replace(/#/gi, ''), 10);
+        var hash = parseInt( window.location.hash.replace(/#page/gi, ''), 10);
         var find = false;
+        var datas = null;
         for(var i = 0, len = data.length; i < len; i ++) {
            var _d = data[i];
            if ( _d.number === hash) {
               find = true;
+              datas = _d;
               break;
            }
         }
-        return find;
+        if ( find ) {
+           self.set('id', hash);
+        }
+        return {
+           find: find,
+           data: datas
+        };
      },
-     initHash: function () {
+     getHash: function () {
         var self = this;
         var hash = window.location.hash;
-        if (hash && self.hasPageNo() ) {
-            return true;
+        if (hash) {
+            var hasPageNo = self.hasPageNo();
+            if (hasPageNo.find) {
+               return hasPageNo.data;
+            }
         }
         return false;
      },
@@ -187,7 +212,7 @@
       * @param  {[type]} data [description]
       * @return {[type]}      [description]
       */
-     renderPage: function (id) {
+     renderPage: function (id, side) {
           var self = this;
           var Storage = self.Storage;
           var _renderPage = function(data) {
@@ -210,7 +235,8 @@
             _renderPage(_data_);
           } else {
             U.ajax(cfg);
-          }       
+          }
+          side && self.renderSibar(side);       
      },
      renderList: function(data) {
        var self = this;
@@ -233,25 +259,26 @@
           e.halt();
           var $target = $.one(e.currentTarget);
           var id = $target.attr('data-id');
-          self.renderPage(id);
           window.location.hash = 'page' + id;
-          self.renderSibar({
-             url: $target.attr('href'),
-             title: $target.text(),
-             author: $target.attr('data-author'),
-             date: (function(){
-                 var _date = $target.attr('data-date');
-                 if (!_date) {
-                    return "";
-                 }
-                 return _date.split('T')[0]
-             }())
-          });
+          // var side = {
+          //    url: $target.attr('href'),
+          //    title: $target.text(),
+          //    author: $target.attr('data-author'),
+          //    date: (function(){
+          //        var _date = $target.attr('data-date');
+          //        if (!_date) {
+          //           return "";
+          //        }
+          //        return _date.split('T')[0]
+          //    }())
+          // }
+          // self.renderPage(id, side);
        });
        
        $.one('#J_ToolBar').delegate(EVENT_CLICK, '#J_Close', function (e) {
           e.halt();
           var that = this;
+          window.location.hash = "";
           $.one(that).addClass('hide');
           $WRAP.removeClass('animate');
           $.one('body').removeClass('single-page');
