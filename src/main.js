@@ -41,7 +41,6 @@
         self.step1();
         self.initArchive();
         self.initSideBar();
-        self.initHashEvents();
      },
      /**
       * 初始化storage，
@@ -102,6 +101,7 @@
             var _data = self.formateData( S.clone(data) );
             self.renderList(_data);
             self.pagenav();
+            self.initHashEvents();
         }
         var cfg = {
            url: APIURL,
